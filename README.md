@@ -19,7 +19,7 @@ Shutdown: Ctrl + C in the new TomCat terminal that appears on startup
 
 Command Prompt 4: (Compile the source code for new/updated Java files)
 cd \myWebProject\tomcat\webapps\clicker\WEB-INF\classes
-javac -cp .;c:\myWebProject\tomcat\lib\servlet-api.jar _______.java
+javac -cp .;c:\myWebProject\tomcat\lib\servlet-api.jar _______.java  #replace line w java file
 
 
 On Java file update:
