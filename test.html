@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <style></style>
-    </head>
-    <body>
-        <div>
-            <form action="selectservlet" method="get">
-                <button type="submit" name="choice" value="A">Choose A</button>
-            </form>
-        </div>
-        <div>
-            <nav>Q1. Who is the coolest Marvel Hero?
-                <ol type="A">
-                    <li>Captain America</li>
-                    <li>Iron Man</li>
-                    <li>Black Widow</li>
-                    <li>Thor</li>
-                </ol>
-            </nav>
-        </div>
-    </body>
+
+<head>
+    <title></title>
+    <style></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+</head>
+
+<body>
+    <div>
+        <form action="selectservlet" method="get">
+            <button type="submit" name="choice" value="A">Choose A</button>
+        </form>
+    </div>
+    <div>
+        <nav>Q1. Who is the coolest Marvel Hero?
+            <ol type="A">
+                <li>Captain America</li>
+                <li>Iron Man</li>
+                <li>Black Widow</li>
+                <li>Thor</li>
+            </ol>
+        </nav>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script>
+        const canvas = document.getElementById('canvas').getContext('2d');
+        let chart = new Chart(canvas, {
+            type: 'bar',
+            data: {
+                labels: ['Cap', 'IMIW', 'BW', 'Thor'],
+                datasets: [{
+                    label: "Favourite character",
+                    data: [1.84, 1.94, 3.21, 1.25],
+                    backgroundColor: [
+                        'blue', 'red', 'black', 'yellow'
+                    ]
+                }]
+            }
+        })
+    </script>
+</body>
+
 </html>
