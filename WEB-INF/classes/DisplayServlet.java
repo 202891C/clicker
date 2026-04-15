@@ -4,7 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet("/displayservlet")   
+@WebServlet("/display")   
 public class DisplayServlet extends HttpServlet {
 
    @Override
@@ -53,7 +53,8 @@ public class DisplayServlet extends HttpServlet {
         String value;
 
         out.println("<script>");
-        out.println("const canvas = document.getElementById('canvas').getContext('2d');");
+        out.println("const canvas = ");
+        out.println("document.getElementById('canvas').getContext('2d');");
         out.println("let chart = new Chart(canvas, {");
         out.println("   type: 'bar',");
         out.println("   data: {");
@@ -64,7 +65,7 @@ public class DisplayServlet extends HttpServlet {
 
         while(rset.next()) {
             if(count>0){
-                out.print(",");
+                out.print(", ");
             }
             out.print(Double.parseDouble(rset.getString("score")));
             count++;
@@ -85,11 +86,14 @@ public class DisplayServlet extends HttpServlet {
             //     +"'>"+ value + ": " + rset.getString("score")+"</div>");
          }
         out.println("],");
-        out.print("backgroundColor: [");
+        out.print("           backgroundColor: [");
         out.print("'blue', 'red', 'black', 'yellow'");
         out.print("]");
-        out.print("}]");
+        out.println("}]");
         out.print("}");
+        out.print(", options: {scales: {yAxes: ");
+        out.print("[{ ticks: {beginAtZero: true, stepSize: 1}}]");
+        out.print("},legend: {display: true}}");
         out.println("})</script>");
 
         // out.println("</div>");

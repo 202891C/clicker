@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.*;
 //import javax.servlet.http.*;
 //import javax.servlet.annotation.*;
 
-@WebServlet("/selectservlet")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
+@WebServlet("/select")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class SelectServlet extends HttpServlet {
 
    // The doGet() runs once per HTTP GET request to this servlet.
@@ -45,7 +45,7 @@ public class SelectServlet extends HttpServlet {
       //   out.println("<p>" + count + " record updated.</p>");
         out.println("<h3>Your vote has been recorded.</h3>");
         out.println("<h3> "+
-            "<form action='displayservlet' method='get'>"+
+            "<form action='display' method='get'>"+
                 "<button type='submit'>View results</button>"+
             "</form><h3>");
          //-----------------------------------------------------------------------------------------------------------------
