@@ -17,7 +17,7 @@ public class DisplayServlet extends HttpServlet {
       out.println("<head><title>View Results</title>");
       out.println("<link rel='stylesheet' href='css/barchart.css'>");
       out.println("<body>");
-      out.println("<div class='vbar'>");
+      out.println("<div>");
 
       try (
          Connection conn = DriverManager.getConnection(
@@ -26,19 +26,44 @@ public class DisplayServlet extends HttpServlet {
          Statement stmt = conn.createStatement();
       ) {
         Double total;
-        String sqlTot = "SELECT count(*) AS total FROM responses WHERE questionNo=1;";
+        int questionNo=1;
+        String sqlTot = "SELECT count(*) AS total FROM responses WHERE questionNo="+questionNo+";";
         ResultSet rst = stmt.executeQuery(sqlTot);
         rst.next();
         total=Double.parseDouble(rst.getString("total"));
         rst.close();
 
+        out.println("<nav>Q" + questionNo + ". Who is the coolest Marvel Hero?");
+                out.println("<ol type='A'>");
+                    out.println("<li>Captain America</li>");
+                    out.println("<li>Iron Man</li>");
+                    out.println("<li>Black Widow</li>");
+                    out.println("<li>Thor</li>");
+                out.println("</ol></nav>");
+
+        out.println("<div class='vbar'>");
         String sqlStr = "SELECT choice, COUNT(*) AS score FROM responses WHERE questionNo=1 GROUP BY choice order by choice;";
         ResultSet rset = stmt.executeQuery(sqlStr);
         int count = 0;
+        String value;
          while(rset.next()) {
-            out.println("<div id='"+rset.getString("choice")+"' style='height:" + (Double.parseDouble(rset.getString("score"))/total)*100 +"%' id='"+ count+1 +"'>"+rset.getString("score")+"</div>");
-            // out.println("Test");
             count++;
+            if(count == 1){
+                value="Captain America";
+            }
+            else if(count == 2){
+                value="Iron Man";
+            }
+            else if(count == 3){
+                value="Black Widow";
+            }
+            else{
+                value="Thor";
+            }
+            out.println("<div id='"+rset.getString("choice")+"' style='height:" + 
+                (Double.parseDouble(rset.getString("score"))/total)*100 +"%'" 
+                +"'>"+ value + ": " + rset.getString("score")+"</div>");
+            
          }
         out.println("</div>");
          //-----------------------------------------------------------------------------------------------------------------
