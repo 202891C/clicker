@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bar Chart Demo</title>
+    <meta charset="utf-8">
+
+    <!-- (A) LOAD CSS + JS -->
+    <script src="3-bar-chart.js"></script>
+    <link rel="stylesheet" href="3-bar-chart.css">
+  </head>
+  <body>
+    <!-- (B) DIV TO GENERATE BAR CHART -->
+    <div id="demoA"></div>
+    <div id="demoB"></div>
+
+    <!-- (C) CREATE CHARTS -->
+    <script>
+    // (C1) HORIZONTAL BAR CHART
+    bchart.draw({
+      type: "h",
+      target: document.getElementById("demoA"),
+      data: [
+        ["First", 33],
+        ["Second", 100],
+        ["Third", 70]
+      ]
+    });
+
+    // (C2) VERTICAL BAR CHART
+    bchart.draw({
+      type : "v",
+      target : document.getElementById("demoB"),
+      data: [
+        ["First", 33, "#4e0707"],
+        ["Second", 100, "#077419"],
+        ["Third", 70, "#124789"]
+      ]
+    });
+    </script>
+  </body>
+</html>

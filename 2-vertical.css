@@ -1,0 +1,32 @@
+/* (A) KEY MECHANICS */
+/* (A1) WRAPPER FLEX LAYOUT */
+.vbar {
+  width: 100%; height: 400px;
+  display: flex; align-items: flex-end;
+}
+
+/* (A2) INDIVIDUAL BARS */
+#first { height: 33%; background: red; }
+#second { height: 67%; background: green; }
+
+/* (B) COSMETICS */
+/* (B1) "BACKGROUND LINES" */
+.vbar {
+  border: 1px solid #333;
+  background: repeating-linear-gradient(
+    to bottom, #f2f2f2, #ddd 2px, #fff 2px, #fff 10%
+  );
+}
+
+/* (B2) BAR SPACING */
+.vbar div {
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+}
+
+/* (B3) STANDARD FONT + BOX SIZING */
+.vbar, .vbar * {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}

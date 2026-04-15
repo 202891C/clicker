@@ -1,0 +1,38 @@
+.vbar {
+  width: 100%; height: 400px;
+  display: flex; align-items: flex-end;
+}
+
+/* #first { height: 33%; background: red; }
+#second { height: 67%; background: green; } */
+
+#A{
+    background: blue;
+}
+#B{
+    background: red;
+}
+#C{
+    background: black;
+}
+#D{
+    background: yellow;
+}
+
+.vbar {
+  border: 1px solid #333;
+  background: repeating-linear-gradient(
+    to bottom, #f2f2f2, #ddd 2px, #fff 2px, #fff 10%
+  );
+}
+
+.vbar div {
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+}
+
+.vbar, .vbar * {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
